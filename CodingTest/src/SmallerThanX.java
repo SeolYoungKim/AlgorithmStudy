@@ -15,7 +15,7 @@ public class SmallerThanX {
             if (a[i] < x)
                 System.out.print(a[i] + " ");
         }
-    
+
 
     }
 }
