@@ -2,7 +2,10 @@ package bruteForceSearch;
 
 import java.util.*;
 
-public class BaekJoon2309 {
+/**
+ * 일곱난쟁이
+ */
+public class Bj2309 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> result = new ArrayList<>();
