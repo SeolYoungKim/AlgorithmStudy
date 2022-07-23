@@ -29,20 +29,9 @@ public class Bj2503 {
 
         ArrayList<String> allNumList = new ArrayList<>();
 
-        for (int i = 111; i < 1000; i++) {
+        for (int i = 123; i < 987; i++) {
             allNumList.add("" + i);
         }
-
-        for (int i = 0; i < n; i++) {
-            List<String> removed = new ArrayList<>();
-
-            String readLine = br.readLine();
-            String[] s = readLine.split(" ");
-
-            String answer = s[0];
-            String strike = s[1];
-            String ball = s[2];
-            String[] toChar = stringToChar(answer);
 
             /**
              * S3 : 끝
@@ -51,35 +40,5 @@ public class Bj2503 {
              * S1B0, S0B1 : 숫자 1개가 포함되어있지 않은 애들은 전부 삭제
              */
 
-            if (strike.equals("3")) {
-                System.out.println(1);
-                break;
-            } else if (ball.equals("3") || ((strike.equals("2")) && ball.equals("1")) || ((strike.equals("1")) && ball.equals("2"))){
-
-                allNumList.removeIf(str ->
-                        !(str.contains(toChar[0]) && str.contains(toChar[1]) && str.contains(toChar[2])));
-
-            } else if ((strike.equals("1") && ball.equals("0")) || (strike.equals("0") && ball.equals("1"))){
-
-                allNumList.removeIf(str ->
-                        !(str.contains(toChar[0]) || str.contains(toChar[1]) || str.contains(toChar[2])));
-
-            } else if ((strike.equals("1") && ball.equals("1")) || (strike.equals("2") && ball.equals("0")) || (strike.equals("0") && ball.equals("2"))) {
-
-                allNumList.removeIf(str ->
-                        !((str.contains(toChar[0]) && str.contains(toChar[1])) || (str.contains(toChar[0]) && str.contains(toChar[2])) || (str.contains(toChar[1]) && str.contains(toChar[2]))));
-
-            }
-
-//            else if (ball.equals("3") || (strike.equals("2") && ball.equals("1")) || (strike.equals("1") && ball.equals("2"))) {
-//                String[] toChar = stringToChar(answer);
-//                allNumList.removeIf(str -> !(str.contains(toChar[0]) && str.contains(toChar[1]) && str.contains(toChar[2])));
-//            } else if (strike.equals("2")) {
-//
-//            }
-
-        }
-
-        System.out.println(allNumList.size());
     }
 }
