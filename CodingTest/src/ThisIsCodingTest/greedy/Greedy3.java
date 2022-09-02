@@ -1,4 +1,4 @@
-package ThisIsCodingTest;
+package ThisIsCodingTest.greedy;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class Greedy3 {
             System.out.println("string = " + string);
         }
 
-        for (int i = 0; i < strings.length; i++) {
+        for (int i = 0; i < n; i++) {
             intArr[i] = Integer.parseInt(strings[i]);
         }
 
@@ -29,7 +29,18 @@ public class Greedy3 {
             System.out.println("i = " + i);
         }
 
-        int teamCount = 0;
+        int totalTeam = 0;
+        int currentTeam = 0;
+
+        for (int i = 0; i < n; i++) {
+            currentTeam += 1;
+            if (currentTeam >= intArr[i]) {
+                totalTeam += 1;
+                currentTeam = 0;
+            }
+        }
+
+        System.out.println("totalTeam = " + totalTeam);
 
     }
 }
