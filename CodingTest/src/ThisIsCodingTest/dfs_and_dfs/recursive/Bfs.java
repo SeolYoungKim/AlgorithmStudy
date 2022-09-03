@@ -6,7 +6,7 @@ import java.util.Queue;
 
 public class Bfs {
     public static boolean[] visited = new boolean[9];
-    public static ArrayList<ArrayList<Integer>> graph = new ArrayList<ArrayList<Integer>>();
+    public static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
 
     // BFS 함수 정의
     public static void bfs(int start) {
