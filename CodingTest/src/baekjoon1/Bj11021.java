@@ -3,26 +3,22 @@ package baekjoon1;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
-public class Bj25304 {
+public class Bj11021 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int receipt = Integer.parseInt(br.readLine());
-
         int n = Integer.parseInt(br.readLine());
-
-        int result = 0;
+        ArrayList<Integer> results = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
             String[] s = br.readLine().split(" ");
-            result += Integer.parseInt(s[0]) * Integer.parseInt(s[1]);
+            results.add(Integer.parseInt(s[0]) + Integer.parseInt(s[1]));
         }
 
-        if (receipt == result) {
-            System.out.println("Yes");
-        } else {
-            System.out.println("No");
+        for (int i = 0; i < n; i++) {
+            System.out.printf("Case #%d: %d%n",i + 1 , results.get(i));
         }
     }
 }
