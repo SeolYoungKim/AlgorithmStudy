@@ -7,24 +7,37 @@ import java.util.List;
 public class Hash04 {
 
     public static void main(String[] args) {
-        String[][] strArr = {{"yellow_hat", "headgear"}, {"blue_sunglasses", "eyewear"}, {"green_turban", "headgear"}};
+        String[][] strArr = {
+                {"yellow_hat", "headgear"},
+                {"green_turban", "headgear"},
+                {"blue_sunglasses", "eyewear"},
+                {"glasses", "face"},
+                {"face_paint", "face"},
+                {"green_pants", "pants"},
+                {"blue_pants", "pants"},
+                {"t_shirts", "shirts"},
+                {"v_shirts", "shirts"},
+                {"duck_down", "jumper"},
+                {"blue_jacket", "jumper"}
+        };
+
         Hash04 hash04 = new Hash04();
-        hash04.solution(strArr);
+        int solution = hash04.solution(strArr);
+        System.out.println("solution = " + solution);
     }
+
     public int solution(String[][] clothes) {
-        HashMap<String, List<String>> map = new HashMap<>();
+        HashMap<String, Integer> map = new HashMap<>();
         for (String[] clothe : clothes) {
-            String val = clothe[0];
-            String key = clothe[1];
-
-            if (!map.containsKey(key)) {
-                map.put(key, new ArrayList<>());
-            }
-
-            map.get(key).add(val);
+            map.put(clothe[1], map.getOrDefault(clothe[1], 1) + 1);  // 경우의 수를 저장. n + 1
         }
 
         System.out.println(map);
-        return 0;
+
+        int sum = map.values().stream()
+                .mapToInt(value -> value)
+                .reduce(1, (a, b) -> a * b);
+
+        return sum - 1;
     }
 }
