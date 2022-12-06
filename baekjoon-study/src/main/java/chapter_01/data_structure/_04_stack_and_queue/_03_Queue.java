@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+/**
+ * 백준 2164 "카드 게임"
+ */
 public class _03_Queue {
 
     public static void main(String[] args) throws IOException {
