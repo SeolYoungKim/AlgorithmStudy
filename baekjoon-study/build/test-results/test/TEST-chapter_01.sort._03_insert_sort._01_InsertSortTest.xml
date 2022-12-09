@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="chapter_01.sort._03_insert_sort._01_InsertSortTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-12-09T03:38:20" hostname="gimseol-yeong-ui-MacBookPro.local" time="0.036">
+  <properties/>
+  <testcase name="myMethod()" classname="chapter_01.sort._03_insert_sort._01_InsertSortTest" time="0.036"/>
+  <system-out><![CDATA[32
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
