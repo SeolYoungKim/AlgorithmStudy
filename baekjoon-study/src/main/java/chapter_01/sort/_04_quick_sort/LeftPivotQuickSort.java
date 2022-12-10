@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class LeftPivotQuickSort {
     public static void main(String[] args) {
-        int[] arr = {42, 32, 24, 60, 15, 5, 90, 45};
+        int[] arr = {5, 3, 8, 2, 9, 4, 7};
         sort(arr);
 
         System.out.println(Arrays.toString(arr));
@@ -35,6 +35,7 @@ public class LeftPivotQuickSort {
         int pivot = arr[left];  // 해당 리스트의 왼쪽 요소를 피벗으로 설정
 
         while (lowIdx < highIdx) {
+            //TODO LeftPivot 방식은 왼쪽에 작은 값이 몰릴 수 있도록 보장한다. 그렇게 함으로써, Pivot과 lowIdx 요소를 서로 바꿨을 때, 왼쪽에는 반드시 작은값들만이 있을 수 있다. (Pivot과 큰 값이 바뀌는것을 방지한다)
             //TODO highIdx > lowIdx이면서, highIdx의 요소가 pivot보다 작거나 같은 원소를 찾을 때 까지 highIdx를 왼쪽으로 이동 (pivot보다 작은 원소 탐색)
             while (pivot < arr[highIdx] && lowIdx < highIdx) {
                 highIdx--;

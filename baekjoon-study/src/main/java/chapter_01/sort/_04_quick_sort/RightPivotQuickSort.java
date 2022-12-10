@@ -34,6 +34,7 @@ public class RightPivotQuickSort {
         int pivot = arr[right];
 
         while (lowIdx < highIdx) {
+            //TODO RightPivot 방식은 오른쪽에 큰 값이 몰릴 수 있도록 보장한다. 그렇게 함으로써, Pivot과 highIdx 요소를 서로 바꿨을 때, 오른쪽에는 반드시 큰값들만이 있을 수 있다. (Pivot과 작은 값이 바뀌는것을 방지한다)
             //TODO 오른쪽이 기준으므로, lowIdx먼저 움직인다.
             while (arr[lowIdx] < pivot && lowIdx < highIdx) {
                 lowIdx++;
