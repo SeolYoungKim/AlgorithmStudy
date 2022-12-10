@@ -29,7 +29,6 @@ public class _01_InsertSort {
                     int leftNum = numbers[i];
                     if (currNum < leftNum) {
                         numbers[i + 1] = leftNum;
-//                        numbers[i] = currNum;  // swap
                     } else {
                         numbers[i + 1] = currNum;
                         break;
