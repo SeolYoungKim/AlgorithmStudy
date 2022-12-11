@@ -9,11 +9,13 @@ import java.util.StringTokenizer;
  * 백준 11004번 "K번째 수 구하기"
  */
 public class _01_QuickSort {
+    private static int k;
+
     public static void main(String[] args) throws IOException {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int n = Integer.parseInt(st.nextToken());
-            int k = Integer.parseInt(st.nextToken());
+            k = Integer.parseInt(st.nextToken());
 
             StringTokenizer st2 = new StringTokenizer(br.readLine());
             int[] numbers = new int[n];
@@ -21,13 +23,30 @@ public class _01_QuickSort {
                 numbers[i] = Integer.parseInt(st2.nextToken());
             }
 
-            quickSortCenter(numbers);
+            quickSortPart(numbers);
             System.out.println(numbers[k - 1]);
         }
     }
 
     // 위 문제를 퀵 정렬로 풀어보자.
     //TODO 1. 왼쪽 피벗
+    private static void quickSortPart(int[] numbers) {
+        leftPivotQuickSortPart(numbers, 0, numbers.length - 1);
+    }
+
+    private static void leftPivotQuickSortPart(int[] numbers, int lowIdx, int highIdx) {
+        int pivot = partition(numbers, lowIdx, highIdx);
+        if (pivot == k) {
+            return;
+        }
+
+        if (pivot <= k) {
+            leftPivotQuickSortPart(numbers, pivot + 1, highIdx);
+        } else {
+            leftPivotQuickSortPart(numbers, lowIdx, pivot - 1);
+        }
+    }
+
     public static void quickSortLeft(int[] numbers) {
         leftPivotQuickSort(numbers, 0, numbers.length - 1);
     }
