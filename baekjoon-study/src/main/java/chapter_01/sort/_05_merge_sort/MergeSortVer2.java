@@ -2,6 +2,7 @@ package chapter_01.sort._05_merge_sort;
 
 import java.util.Arrays;
 
+//https://gyoogle.dev/blog/algorithm/Merge%20Sort.html
 public class MergeSortVer2 {
     public static void main(String[] args) {
         int[] array = { 230, 10, 60, 550, 40, 220, 20 };

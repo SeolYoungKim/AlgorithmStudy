@@ -1,5 +1,6 @@
 package chapter_01.sort._05_merge_sort;
 
+//https://st-lab.tistory.com/233
 public class MergeSortVer1 {
     private static int[] sorted;
 
