@@ -1,11 +1,16 @@
 package chapter_01.sort._05_merge_sort;
 
+import java.util.Arrays;
+
 //https://st-lab.tistory.com/233
 public class MergeSortVer1 {
     private static int[] sorted;
 
     public static void main(String[] args) {
-        int[] numbers = {42, 32, 24, 60, 15, 5, 90, 45};
+        int[] numbers = {3, 2, 1};
+        mergeSort(numbers);
+
+        System.out.println(Arrays.toString(numbers));
     }
 
     public static void mergeSort(int[] arr) {
