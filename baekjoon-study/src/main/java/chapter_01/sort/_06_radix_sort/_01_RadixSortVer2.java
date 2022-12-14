@@ -18,7 +18,7 @@ public class _01_RadixSortVer2 {
                 bucket[(number / jarisu) % 10]++;
             }
 
-            for (int i = 1; i < 10; i++) {  // bucket의 누적합을 구한다? 왜 ?
+            for (int i = 1; i < 10; i++) {  // bucket의 누적합을 구한다? 왜 ? <- output에 들어갈 인덱스를 지정해준다
                 bucket[i] += bucket[i - 1];
             }
 
