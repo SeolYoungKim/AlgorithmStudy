@@ -18,42 +18,51 @@ public class _01_Dfs {
             int n = Integer.parseInt(st1.nextToken());  // 노드 개수
             int m = Integer.parseInt(st1.nextToken());  // 에지 개수
 
-            visited = new boolean[n];
+            visited = new boolean[n + 1];
             Arrays.fill(visited, false);
 
             nodes = new ArrayList<>();
+            nodes.add(new ArrayList<>());  //index 0번째에 넣음
+
             for (int i = 0; i < n; i++) {
-                nodes.add(new ArrayList<>());
+                nodes.add(new ArrayList<>());  //1부터 시작하기 위해 노드 갯수만큼 넣음
             }
 
-            for (int i = 0; i < m; i++) {
+            for (int i = 0; i < m; i++) {  // 에지 개수만큼 반복
                 StringTokenizer st = new StringTokenizer(br.readLine());
-                int node = Integer.parseInt(st.nextToken()) - 1;
-                Integer linkedNode = Integer.valueOf(st.nextToken());
+                int node = Integer.parseInt(st.nextToken());
+                int linkedNode = Integer.parseInt(st.nextToken());
 
-                nodes.get(node).add(linkedNode);
+                nodes.get(node).add(linkedNode);  // 양방향 노드
+                nodes.get(linkedNode).add(node);  // 양방향 노드
             }
 
-            System.out.println(nodes);
-            dfs(1);
+            int count = 0;
+            for (int i = 1; i <= n; i++) {
+                if (!visited[i]) {
+                    dfs(i);
+                    count++;
+                }
+            }
 
-            System.out.println(Arrays.toString(visited));
+            System.out.println(count);
         }
     }
 
-    public static void dfs(int value) {
-        visited[value - 1] = true;
+    static void dfs(int node) {
+        if (visited[node]) {
+            return;
+        }
 
-        System.out.print(value + " ");
-
-        // value에 해당하는 연결 노드들을 가져옴
-        List<Integer> linkedNodes = nodes.get(value - 1);
+        visited[node] = true;
+        List<Integer> linkedNodes = nodes.get(node);
         for (Integer linkedNode : linkedNodes) {
-            if (!visited[linkedNode - 1]) {
+            if (!visited[linkedNode]) {
                 dfs(linkedNode);
             }
         }
     }
+
 }
 //6 8
 //1 2
