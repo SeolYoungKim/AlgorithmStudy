@@ -8,6 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
+/**
+ * 백준 11724번 "연결된 요소의 개수"
+ */
 public class _01_Dfs {
     static boolean[] visited;
     static List<List<Integer>> nodes;
