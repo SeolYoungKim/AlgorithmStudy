@@ -1,4 +1,4 @@
-package chapter_01.search;
+package chapter_01.search.dfs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,9 +8,9 @@ import java.util.StringTokenizer;
 /**
  * 백준 1167번 "트리의 지름 구하기"
  */
-public class Unknown {
+public class _04_Dfs {
     static int n;
-    static int[][] nodes;
+    static int[][] nodes;  //TODO 메모리 부족 예상 포인트
     static boolean[] visited;
     static int[] weight;
 
@@ -46,6 +46,7 @@ public class Unknown {
 //                    nodes[node][linkedNode - '0'] = weight;
 //                }
 //            }
+
 //            for (int i = 0; i < n; i++) {
 //                String[] edge = br.readLine().split(" ");
 //                int node = Integer.parseInt(edge[0]);
@@ -72,7 +73,7 @@ public class Unknown {
 
         visited[node] = true;
         int[] linkedNodes = nodes[node];
-        for (int i = 1; i <= n; i++) { // i == node
+        for (int i = 1; i <= n; i++) { // i == node.
             int linkedNodeWeight = linkedNodes[i];
             if (!visited[i] && linkedNodeWeight != 0) {
                 weight[node] = Math.max(weight[node], linkedNodeWeight);
