@@ -3,12 +3,36 @@ package chapter_01.greedy;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class _03_Greedy {
     public static void main(String[] args) throws IOException {
+        shortMethod();
+    }
+
+    static void shortMethod() {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        int[] ans = new int[n + 1];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        Arrays.sort(arr);
+        for (int i = 1; i < n + 1; i++) {
+            ans[i] = ans[i - 1] + arr[i - 1];
+            if (i > 1) {
+                ans[i] = Math.max(ans[i], ans[i - 2] + (arr[i - 2] * arr[i - 1]));
+            }
+        }
+        System.out.println(ans[n]);
+    }
+
+    static void myMethod() throws IOException {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
             int n = Integer.parseInt(br.readLine());
 
