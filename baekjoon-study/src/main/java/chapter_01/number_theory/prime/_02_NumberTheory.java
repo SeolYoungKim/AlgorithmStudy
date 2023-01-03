@@ -1,4 +1,4 @@
-package chapter_01.number_theory;
+package chapter_01.number_theory.prime;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +15,7 @@ public class _02_NumberTheory {
             long a = Long.parseLong(st.nextToken());
             long b = Long.parseLong(st.nextToken());
 
-            int maxNum = 10000000;
+            int maxNum = 10_000_000;
             long[] numbers = new long[maxNum + 1];
             for (int i = 0; i < maxNum; i++) {
                 numbers[i] = i;

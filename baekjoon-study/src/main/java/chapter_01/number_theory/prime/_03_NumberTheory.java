@@ -1,4 +1,4 @@
-package chapter_01.number_theory;
+package chapter_01.number_theory.prime;
 
 import java.io.BufferedReader;
 import java.io.IOException;
