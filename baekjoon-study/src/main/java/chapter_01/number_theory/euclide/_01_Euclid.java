@@ -23,12 +23,14 @@ public class _01_Euclid {
 //        }
 
         int i = gcd(11111, 111);
+        int j = gcdRecursion(11111, 111);
         System.out.println("i = " + i);
+        System.out.println("j = " + j);
     }
 
     static int gcdRecursion(int more, int less) {
         if (less == 0) {
-            return less;
+            return more;
         }
 
         return gcdRecursion(less, more % less);

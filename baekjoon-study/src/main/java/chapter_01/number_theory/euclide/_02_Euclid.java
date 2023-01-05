@@ -33,6 +33,14 @@ public class _02_Euclid {
         }
     }
 
+    static long gcdRecursion(long large, long small) {
+        if (small == 0) {
+            return large;
+        }
+
+        return gcdRecursion(large, large % small);
+    }
+
     static long gcd(long large, long small) {
         long remainder = large % small;
         if (remainder == 0) {
