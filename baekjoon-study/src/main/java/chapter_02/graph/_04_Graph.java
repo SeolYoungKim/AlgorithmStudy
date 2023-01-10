@@ -7,6 +7,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+/**
+ * 백준 2251번 "물의 양 구하기"
+ */
 public class _04_Graph {
     // 갈 수 있는 경우의 수
     static int[] sender = {0, 0, 1, 1, 2, 2};
