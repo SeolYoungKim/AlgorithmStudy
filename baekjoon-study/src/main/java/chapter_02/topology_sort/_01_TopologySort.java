@@ -45,11 +45,11 @@ public class _01_TopologySort {
             }
 
             while (!queue.isEmpty()) {
-                Integer poll = queue.poll();
+                Integer poll = queue.poll();  // 1
                 bw.write(poll + " ");
 
                 List<Integer> linkedNodes = nodes.get(poll);
-                for (Integer linkedNode : linkedNodes) {
+                for (Integer linkedNode : linkedNodes) {  // 2, 3, 4
                     inDegree[linkedNode]--;
                     if (inDegree[linkedNode] == 0) {
                         queue.offer(linkedNode);
