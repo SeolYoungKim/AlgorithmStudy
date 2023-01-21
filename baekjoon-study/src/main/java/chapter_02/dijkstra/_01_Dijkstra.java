@@ -86,7 +86,7 @@ public class _01_Dijkstra {
 
     }
 
-    static class Node {
+    private static class Node {
         private final int value;
         private int distance;
 

@@ -66,7 +66,7 @@ public class Dijkstra {
     }
 
 
-    static class Node {
+    private static class Node {
         private final int value;
         private final int weight;
 
