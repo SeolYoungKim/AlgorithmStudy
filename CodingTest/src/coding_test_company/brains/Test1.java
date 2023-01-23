@@ -1,4 +1,4 @@
-package coding_test_company;
+package coding_test_company.brains;
 
 public class Test1 {
     public static void main(String[] args) {
