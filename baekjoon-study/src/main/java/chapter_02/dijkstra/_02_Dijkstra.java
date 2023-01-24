@@ -69,7 +69,8 @@ public class _02_Dijkstra {
             visited[node.value] = true;
             final List<Node> nextNodes = nodes.get(node.value);
             for (Node nextNode : nextNodes) {
-                if (!visited[nextNode.value]) {  // 방문한적이 없을 때만(즉, 꺼냈던 노드가 아닌경우만!)
+                if (!visited[nextNode.value]
+                        && minFee[nextNode.value] > minFee[node.value] + nextNode.fee) {  // 방문한적이 없을 때만(즉, 꺼냈던 노드가 아닌경우만!)
                     minFee[nextNode.value] = Math.min(minFee[nextNode.value],
                             minFee[node.value] + nextNode.fee);  // 최소 가격 갱신
 
