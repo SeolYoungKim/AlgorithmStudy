@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="daily._2023._03.Day_20_Mon" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-03-20T11:45:06" hostname="gimseol-yeong-ui-MacBookPro.local" time="0.029">
-  <properties/>
-  <testcase name="[1] 1, false" classname="daily._2023._03.Day_20_Mon" time="0.026"/>
-  <testcase name="[2] 2, false" classname="daily._2023._03.Day_20_Mon" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="daily._2023._03.Day_18_Sat" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-20T23:04:00" hostname="gimseol-yeong-ui-MacBookPro.local" time="0.007">
+  <properties/>
+  <testcase name="test()" classname="daily._2023._03.Day_18_Sat" time="0.007"/>
+  <system-out><![CDATA[facebook.com
+google.com
+facebook.com
+linkedin.com
+facebook.com
+leetcode.com
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
