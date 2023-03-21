@@ -14,9 +14,11 @@ public class Day_18_Sat {
         }
 
         public String back(int steps) {
+            return "";
         }
 
         public String forward(int steps) {
+            return "";
         }
     }
 
