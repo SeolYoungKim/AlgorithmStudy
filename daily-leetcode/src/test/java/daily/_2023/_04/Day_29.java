@@ -122,18 +122,23 @@ public class Day_29 {
     public boolean[] distanceLimitedPathsExist(int n, int[][] edgeList, int[][] queries) {
         final Union union = new Union(n);
         for (int i = 0; i < queries.length; i++) {
+            // start, end, limit, index
             queries[i] = new int[]{queries[i][0], queries[i][1], queries[i][2], i};  // 맨 마지막에 인덱스는 왜 저장했지?
         }
 
-        Arrays.sort(queries, Comparator.comparingInt(a -> a[2]));  // limit 기준으로 정렬.. 은 왜했지? -> 찾아보자
-        Arrays.sort(edgeList, Comparator.comparingInt(a -> a[2]));  // edge 기준으로 정렬
+        // 결론적으로, 아래와 같이 정렬을 해야 하는 이유는 순서대로 체크하기 위함이다 (효율적인 측면도 있을 듯)
+        // limit1 보다 작은 edge들 먼저 체크 -> index값을 i에 임시 저장 (위치 포인터)
+        // limit2 부터는 limit2보다 작은 edge들을 체크하는데 limit1에서 체크된 애들은 체크하지 않아도 됨 -> 반복
+        // 만약 순서가 뒤죽박죽이라면 순차적으로 체크가 되질 않음
+        Arrays.sort(queries, Comparator.comparingInt(a -> a[2]));  // limit 기준으로 정렬 -> limit을 기준으로, limit보다 작은 edgeList 먼저 연결시킴. limit을 작은 것 부터 봐야 그 다음 limit을 체크할 때 영향을 안끼침
+        Arrays.sort(edgeList, Comparator.comparingInt(a -> a[2]));  // edge 기준으로 정렬 -> limit보다 작은 edge들이 먼저 union됨 -> 그 다음 limit에서는 이전 limit보다 작았던 edge들은 검사 했으므로, 스킵 가능
 
         int i = 0;
         boolean[] results = new boolean[queries.length];
         for (int[] query : queries) {
-            while (i < edgeList.length && edgeList[i][2] < query[2]) {  // edgeList의 edge가 query의 limit보다 작아야 함
+            while (i < edgeList.length && edgeList[i][2] < query[2]) {  // edgeList의 edge가 query의 limit보다 작아야 함 -> 여기서 edgeList의 edge가 query Limit보다 작은것만 확인하기 위해서 정렬했나?
                 union.union(edgeList[i][0], edgeList[i][1]);  // 작을 때만 유니온으로 경로를 이음
-                i++;
+                i++;  // 정렬을 해서 limit보다 작은 애들은 먼저 연결 -> 그 다음 쿼리에서는 연결이 되지 않은 edgeList부터 시작
             }
 
             if (union.find(query[0]) == union.find(query[1])) {  // start와 end의 root가 같을 때 -> 경로가 있다는 뜻
