@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Queue;
 import org.junit.jupiter.api.Test;
@@ -17,11 +19,9 @@ public class Day_29 {
             this.value = value;
             this.edge = edge;
         }
-
-
     }
 
-    public boolean[] distanceLimitedPathsExist(int n, int[][] edgeList, int[][] queries) {
+    public boolean[] distanceLimitedPathsExistTimeExceed(int n, int[][] edgeList, int[][] queries) {
         final List<List<Node>> nodes = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             nodes.add(new ArrayList<>());
@@ -88,6 +88,60 @@ public class Day_29 {
         }
 
         return false;
+    }
+
+    private static class Union {
+        private final int[] parent;
+
+        public Union(final int n) {
+            parent = new int[n];
+
+            for (int i = 0; i < n; i++) {
+                parent[i] = i;
+            }
+        }
+
+        public int find(int num) {
+            if (parent[num] == num) {
+                return num;  // 루트
+            }
+
+            return parent[num] = find(parent[num]);  // 루트를 찾는 여정...
+        }
+
+        public void union(int x, int y) {
+            int xRoot = find(x);
+            int yRoot = find(y);
+
+            if (xRoot != yRoot) {
+                parent[yRoot] = xRoot;
+            }
+        }
+    }
+
+    public boolean[] distanceLimitedPathsExist(int n, int[][] edgeList, int[][] queries) {
+        final Union union = new Union(n);
+        for (int i = 0; i < queries.length; i++) {
+            queries[i] = new int[]{queries[i][0], queries[i][1], queries[i][2], i};  // 맨 마지막에 인덱스는 왜 저장했지?
+        }
+
+        Arrays.sort(queries, Comparator.comparingInt(a -> a[2]));  // limit 기준으로 정렬.. 은 왜했지? -> 찾아보자
+        Arrays.sort(edgeList, Comparator.comparingInt(a -> a[2]));  // edge 기준으로 정렬
+
+        int i = 0;
+        boolean[] results = new boolean[queries.length];
+        for (int[] query : queries) {
+            while (i < edgeList.length && edgeList[i][2] < query[2]) {  // edgeList의 edge가 query의 limit보다 작아야 함
+                union.union(edgeList[i][0], edgeList[i][1]);  // 작을 때만 유니온으로 경로를 이음
+                i++;
+            }
+
+            if (union.find(query[0]) == union.find(query[1])) {  // start와 end의 root가 같을 때 -> 경로가 있다는 뜻
+                results[query[3]] = true;
+            }
+        }
+
+        return results;
     }
 
     @Test
