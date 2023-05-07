@@ -21,12 +21,14 @@ public class Day_07 {
         int numberOfObstacles = obstacles.length;
         int subSeqLength = 0;
 
-        int[] result = new int[numberOfObstacles];
-        int[] increasingSubSeq = new int[numberOfObstacles];
+        int[] result = new int[numberOfObstacles];  // 결과 배열
+        int[] increasingSubSeq = new int[numberOfObstacles];  // 서브시퀀스 배열
 
         for (int i = 0; i < numberOfObstacles; i++) {
             int left = 0;
-            int right = subSeqLength;
+            int right = subSeqLength;  // 서브시퀀스의 길이
+
+            // 서브시퀀스에서 바이너리 서치로 현재 장애물이 들어갈 수 있는 위치를 찾음
             while (left < right) {
                 int mid = (left + right) / 2;
                 if (increasingSubSeq[mid] <= obstacles[i]) {
@@ -36,12 +38,13 @@ public class Day_07 {
                 }
             }
 
-            result[i] = left + 1;  // 결과 배열에 카운트를 넣는다.
-            if (subSeqLength == left) {
-                subSeqLength++;
+            result[i] = left + 1;  // 현재 장애물이 들어갈 수 있는 위치를 기반으로, 결과 배열에 카운트를 넣는다. (인덱스 + 1 == 길이)
+
+            if (subSeqLength == left) {  // 현재 장애물을 서브시퀀스의 배열 끝에 넣은 경우
+                subSeqLength++;  // 지금까지 본 가장 긴, 증가하는 서브시퀀스의 길이 업데이트
             }
 
-            increasingSubSeq[left] = obstacles[i];
+            increasingSubSeq[left] = obstacles[i];  // 현재 장애물이 들어갈 수 있는 위치에 현재 장애물을 집어넣음.
         }
 
         return result;
