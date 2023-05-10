@@ -111,7 +111,7 @@ public class Day_09 {
         return ans;
     }
 
-    static class Position {
+    private static class Position {
         int x, y, direction;
 
         public Position(int x, int y, int direction) {
