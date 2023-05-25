@@ -1,5 +1,8 @@
 package daily._2023._05;
 
+/**
+ * TODO 풀이 다시한번 보기...
+ */
 public class Day_25 {
     public double new21Game(int n, int k, int maxPts) {
         if (k == 0 || n >= k + maxPts) {
