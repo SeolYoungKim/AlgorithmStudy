@@ -2,52 +2,60 @@ package daily._2023._06;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 public class Day_04 {
     public int findCircleNum(int[][] isConnected) {
         final int n = isConnected.length;
-
-        final int[] parents = new int[n];
-        for (int i = 0; i < n; i++) {
-            parents[i] = i;
-        }
+        final UnionFind unionFind = new UnionFind(n);
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (i != j) {  // 자기 자신이 아닌 경우만 체크
                     if (isConnected[i][j] == 1) {  // 1인 경우만 합집합
-                        union(i, j, parents);
+                        unionFind.union(i, j);
                     }
                 }
             }
         }
 
-        for (int i = 0; i < n; i++) {
-            find(i, parents);
-        }
-
-        return (int) Arrays.stream(parents)
-                .distinct()
-                .count();
+        return unionFind.count();
     }
 
-    private void union(final int a, final int b, final int[] parents) {
-        final int rootA = find(a, parents);
-        final int rootB = find(b, parents);
+    private static class UnionFind {
+        private int count;
+        private int[] parents;
 
-        if (rootA != rootB) {
-            parents[rootB] = rootA;
+        public UnionFind(final int count) {
+            this.count = count;
+            this.parents = new int[count];
+
+            for (int i = 0; i < count; i++) {
+                parents[i] = i;
+            }
         }
-    }
 
-    private int find(int num, final int[] parents) {
-        if (num == parents[num]) {
-            return num;
+        private void union(final int a, final int b) {
+            final int rootA = find(a);
+            final int rootB = find(b);
+
+            if (rootA != rootB) {
+                parents[rootB] = rootA;
+                count--;
+            }
         }
 
-        return parents[num] = find(parents[num], parents);
+        private int find(int num) {
+            if (num == parents[num]) {
+                return num;
+            }
+
+            return parents[num] = find(parents[num]);
+        }
+
+        public int count() {
+            return count;
+        }
     }
 
     @Test
