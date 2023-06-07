@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="daily._2023._06.Day_06" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-06-06T05:22:26" hostname="gimseol-yeong-ui-MacBookPro.local" time="0.024">
-  <properties/>
-  <testcase name="test()" classname="daily._2023._06.Day_06" time="0.024"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
